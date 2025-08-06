@@ -256,25 +256,52 @@
       sessionStorage.setItem('router', router);
     }
 
-    function goToWireless() {
-      const router = document.getElementById('routerSelector').value;
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+   function goToWireless() {
+  const router = document.getElementById('routerSelector').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-      sessionStorage.setItem('username', username);
-      sessionStorage.setItem('password', password);
-      sessionStorage.setItem('password', password);
+  // تحقق من اختيار الراوتر
+  if (!router) {
+    alert("يرجى اختيار نوع الراوتر أولاً");
+    return;
+  }
 
-      const links = {
-        tplink: "http://192.168.0.1/#wirelessBasic",
-        tplink2: "http://192.168.0.1/#wirelessBasic",
-        huawei: "http://192.168.100.1/html/index.html#wlan_security",
-        zte: "http://192.168.1.1/wireless_security.htm",
-        dlink: "http://192.168.0.1/Wireless.html",
-        linksys: "http://192.168.1.254",
-        Xiaomi: "http://192.168.31.1"
-      };
+  // تحقق من تعبئة الحقول (حسب الراوتر)
+  if (router !== "tplink" && router !== "xiaomi") {
+    if (!username || !password) {
+      alert("يرجى ملء اسم المستخدم وكلمة المرور");
+      return;
+    }
+  } else {
+    if (!password) {
+      alert("يرجى إدخال كلمة المرور");
+      return;
+    }
+  }
 
+  // حفظ البيانات في sessionStorage
+  sessionStorage.setItem('router', router);
+  sessionStorage.setItem('username', username);
+  sessionStorage.setItem('password', password);
+
+  // روابط الوايرلس
+  const links = {
+    tplink: "http://192.168.0.1/#wirelessBasic",
+    tplink2: "http://192.168.0.1/#wirelessBasic",
+    huawei: "http://192.168.100.1/html/index.html#wlan_security",
+    zte: "http://192.168.1.1/wireless_security.htm",
+    dlink: "http://192.168.0.1/Wireless.html",
+    linksys: "http://192.168.1.254",
+    xiaomi: "http://192.168.31.1/#wifi"
+  };
+
+  // فتح رابط الراوتر
+  if (links[router]) {
+    window.open(links[router], '_blank'); // فتح في نافذة جديدة
+  } else {
+    alert("رابط الوايرلس غير متوفر لهذا الراوتر.");
+  }
       if (!router) {
         alert("يرجى اختيار نوع الراوتر أولاً");
         return;
@@ -291,6 +318,7 @@
 </body>
 
 </html>
+
 
 
 
