@@ -16,14 +16,15 @@
   }
 
   .overlay {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 30px;
     height: 100%;
    .overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* محاذاة للعناصر لليسار */
-}
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start; /* محاذاة إلى اليسار */
+   direction: ltr; /* مهم: قلب اتجاه العناصر داخل .overlay إلى يسار */
+   padding-left: 40px; /* إزاحة كل العناصر إلى يسار الصفحة */
   }
 
   h1, h2 {
@@ -289,6 +290,7 @@
 </body>
 
 </html>
+
 
 
 
