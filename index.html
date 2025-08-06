@@ -20,12 +20,13 @@
     padding: 30px;
     height: 100%;
    .overlay {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start; /* محاذاة إلى اليسار */
-   direction: ltr; /* مهم: قلب اتجاه العناصر داخل .overlay إلى يسار */
-   padding-left: 40px; /* إزاحة كل العناصر إلى يسار الصفحة */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* محاذاة العناصر إلى اليسار */
+  direction: ltr;           /* قلب اتجاه العناصر داخل الصندوق إلى اليسار */
+  padding-left: 60px;       /* دفع الأزرار قليلاً نحو اليسار */
+  background-color: rgba(255, 255, 255, 0.2); /* خلفية شفافة لتوضيح الصورة */
+}
 
   h1, h2 {
     color: #0077b6; /* أزرق سمائي */
@@ -290,6 +291,7 @@
 </body>
 
 </html>
+
 
 
 
