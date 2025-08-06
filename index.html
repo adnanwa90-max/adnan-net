@@ -110,7 +110,7 @@
       <option value="tplink2">TP-Link-القديم</option>
       <option value="zte">ZTE</option>
       <option value="dlink">D-Link</option>
-      <option value="dlink">Xiaomi</option>
+      <option value="Xiaomi">Xiaomi</option>
       <option value="linksys">Linksys</option>
     </select>
 
@@ -226,11 +226,14 @@
         passwordInput.style.display = "inline-block";
         usernameInput.value = "root";
         passwordInput.value = "admin";
+         } else if (router === "Xiaomi") {
+        usernameInput.style.display = "none";
+        passwordInput.style.display = "inline-block";
+        passwordInput.value = "admin";
       } else {
         usernameInput.style.display = "inline-block";
         passwordInput.style.display = "inline-block";
-        passwordInput.style.display = "inline-block";
-        usernameInput.value = "";
+        
         usernameInput.value = "";
         passwordInput.value = "";
       }
@@ -273,6 +276,7 @@
 </body>
 
 </html>
+
 
 
 
