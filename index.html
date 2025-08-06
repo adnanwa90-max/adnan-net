@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة تحكم مكتب الليث</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      background-image: url(12345.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      height: 100vh;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    select, input, button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 6px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    select {
+      background-color: #34495e;
+      color: white;
+    }
+
+    input {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+
+    .inputs {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section {
+      display: none;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #34495e;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #2c3e50;
+      text-align: center;
+    }
+
+    th {
+      background-color: #2ecc71;
+    }
+
+    tr:hover {
+      background-color: #3e5872;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>🖥️ لوحة تحكم مكتب الليث</h1>
+
+    <select id="routerSelector" onchange="updateFields()">
+      <option value="">-- اختر نوع الراوتر --</option>
+      <option value="tplink">TP-Link</option>
+      <option value="huawei">Huawei</option>
+      <option value="zte">ZTE</option>
+      <option value="dlink">D-Link</option>
+      <option value="linksys">Linksys</option>
+    </select>
+
+    <div class="inputs" id="loginInputs">
+      <input type="text" id="username" placeholder="اسم المستخدم">
+      <input type="password" id="password" placeholder="كلمة المرور">
+    </div>
+
+    <button onclick="goToWireless()">📶 الدخول لإعدادات الوايرلس</button>
+    <button onclick="showSection('devices')">🖥️ عرض الأجهزة المتصلة</button>
+    <button onclick="showSection('schedule')">🕒 الرقابة وجدولة الإنترنت</button>
+<button onclick="showSection('support')">📞 الدعم الفني</button>
+
+<div id="support" class="section">
+  <h2>📞 قسم الدعم الفني</h2>
+  <p>إذا كنت تواجه مشكلة أو تحتاج مساعدة، يُرجى التواصل معنا عبر الأرقام التالية:</p>
+
+  <table>
+    <thead>
+      <tr><th>سجاد</th><th>عدنان</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="whatsapp-link" href="https://wa.me/9647718285967?text=مرحبًا،%20أحتاج%20دعمًا%20حول..." target="_blank">💬 واتساب</a></td>
+<td><a class="whatsapp-link" href="https://wa.me/9647710550230?text=مرحبًا،%20أحتاج%20دعمًا%20حول..." target="_blank">💬 واتساب</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:20px;">نحن متواجدون لخدمتك طوال أيام الأسبوع ✨</p>
+</div>
+    <div id="devices" class="section">
+      <h2>📡 الأجهزة المتصلة</h2>
+      <table>
+        <thead>
+          <tr><th>اسم الجهاز</th><th>MAC</th><th>الحالة</th><th>إجراء</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>هاتف سامي</td>
+            <td>4C:5E:0C:AA:12:98</td>
+            <td>متصل</td>
+            <td><button onclick="alert('تم حظر الجهاز')">🔒 حظر</button></td>
+          </tr>
+          <tr>
+            <td>حاسوب المكتب</td>
+            <td>88:99:77:66:55:44</td>
+            <td>متصل</td>
+            <td><button onclick="alert('تم حظر الجهاز')">🔒 حظر</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="schedule" class="section">
+      <h2>🕒 الجدولة والرقابة الأبوية</h2>
+      <label for="device">الجهاز</label>
+      <select id="device">
+        <option>هاتف سامي</option>
+        <option>حاسوب المكتب</option>
+        <option>تابلت الأطفال</option>
+      </select>
+
+      <label for="start">وقت البدء</label>
+      <input type="time" id="start">
+
+      <label for="end">وقت الانتهاء</label>
+      <input type="time" id="end">
+
+      <button onclick="alert('تم حفظ الجدولة')">✅ حفظ الجدولة</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      const savedRouter = sessionStorage.getItem('router');
+      const savedUsername = sessionStorage.getItem('username');
+      const savedPassword = sessionStorage.getItem('password');
+
+      if (savedRouter) {
+        document.getElementById('routerSelector').value = savedRouter;
+        updateFields(savedRouter);
+      }
+      if (savedUsername !== null) {
+        document.getElementById('username').value = savedUsername;
+      }
+      if (savedPassword !== null) {
+        document.getElementById('password').value = savedPassword;
+      }
+    };
+
+    function updateFields(router = document.getElementById('routerSelector').value) {
+      const loginBox = document.getElementById('loginInputs');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+
+      if (!router) {
+        loginBox.style.display = 'none';
+        return;
+      }
+
+      loginBox.style.display = 'flex';
+      if (router === "tplink") {
+        usernameInput.style.display = "none";
+        passwordInput.value = "admin1";
+      } else if (router === "huawei") {
+        usernameInput.style.display = "inline-block";
+        passwordInput.style.display = "inline-block";
+        usernameInput.value = "root";
+        passwordInput.value = "admin";
+      } else {
+        usernameInput.style.display = "inline-block";
+        passwordInput.style.display = "inline-block";
+        usernameInput.value = "";
+        passwordInput.value = "";
+      }
+
+      sessionStorage.setItem('router', router);
+    }
+
+    function goToWireless() {
+      const router = document.getElementById('routerSelector').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('password', password);
+
+      const links = {
+        tplink: "http://192.168.0.1/#wirelessBasic",
+        huawei: "http://192.168.8.1/html/index.html#wlan_security",
+        zte: "http://192.168.1.1/wireless_security.htm",
+        dlink: "http://192.168.0.1/Wireless.html",
+        linksys: "http://192.168.1.254"
+      };
+
+      if (!router) {
+        alert("يرجى اختيار نوع الراوتر أولاً");
+        return;
+      }
+
+      window.location.href = links[router];
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
